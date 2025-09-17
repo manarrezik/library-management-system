@@ -7,11 +7,9 @@ Authentication is done using **JWT Tokens**.
 
 ## 🔑 Authentication & Users
 
-### Register User  
-**POST** `/api/users/register`  
-
-**Request Body:**
+ `Post /api/users/register` - Register a new user
 ```json
+//request
 {
   "name": "John Doe",
   "email": "john@example.com",
@@ -19,7 +17,7 @@ Authentication is done using **JWT Tokens**.
   "role": "Admin"
 }
 
-//rsponse
+//response
 {
   "_id": "650a2c...",
   "name": "John Doe",
@@ -27,7 +25,7 @@ Authentication is done using **JWT Tokens**.
   "role": "Admin",
   "token": "JWT_TOKEN_HERE"
 }
-POST /api/users/login` - User login
+`POST /api/users/login` - User login
   ```json
   // Request
   {
@@ -167,6 +165,8 @@ POST /api/users/login` - User login
     "message": "User removed"
   }
   ```
+  
+##  📚Books
 
   `POST /api/books` - Delete user (admin only)
   ```json
