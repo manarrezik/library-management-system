@@ -7,7 +7,7 @@ Authentication is done using **JWT Tokens**.
 
 ## 🔑 Authentication & Users
 
- `Post /api/users/register` - Register a new user
+ `POST /api/users/register` - Register a new user
 ```json
 //request
 {
