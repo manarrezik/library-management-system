@@ -25,7 +25,8 @@ Authentication is done using **JWT Tokens**.
   "role": "Admin",
   "token": "JWT_TOKEN_HERE"
 }
-`POST /api/users/login` - User login
+
+- `POST /api/users/login`  - User login
   ```json
   // Request
   {
