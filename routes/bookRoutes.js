@@ -14,10 +14,11 @@ const router = express.Router();
 
 router.get("/", getBooks);
 router.get("/:title", getBookByTitle);
+router.delete("/:id", protect, admin, deleteBook);
 
 
 router.post("/", protect, admin, addBook);
 router.put("/:id", protect, admin, updateBook);
-router.delete("/:id", protect, admin, deleteBook);
+
 
 export default router;

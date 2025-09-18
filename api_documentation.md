@@ -62,33 +62,7 @@ Authentication is done using **JWT Tokens**.
   }
   ```
 
-- `PUT /api/users/profile` - Update user profile (protected)
-  ```json
-  // Headers
-  {
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-  }
-  
-  // Request
-  {
-    "name": "John Updated",
-    "email": "john@example.com",
-    "password": "newpassword",
-    "phone": "9876543210",
-    "address": "456 New St"
-  }
-  
-  // Response
-  {
-    "_id": "60d21b4667d0d8992e610c85",
-    "name": "John Updated",
-    "email": "john@example.com",
-    "isAdmin": false,
-    "phone": "9876543210",
-    "address": "456 New St",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-  }
-  ```
+
 
 - `GET /api/users` - Get all users (admin only)
   ```json
@@ -100,17 +74,15 @@ Authentication is done using **JWT Tokens**.
   // Response
   [
     {
-      "_id": "60d21b4667d0d8992e610c85",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "isAdmin": false
+      "_id": "68c9f190f7f653e9a915eb76",
+        "name": "Manar",
+        "email": "manar@example.com",
+        "role": "Admin",
+        "createdAt": "2025-09-16T23:24:00.057Z",
+        "updatedAt": "2025-09-16T23:24:00.057Z",
+        "__v": 0
     },
-    {
-      "_id": "60d21b4667d0d8992e610c86",
-      "name": "Admin User",
-      "email": "admin@example.com",
-      "isAdmin": true
-    }
+    
   ]
   ```
 
@@ -123,10 +95,13 @@ Authentication is done using **JWT Tokens**.
   
   // Response
   {
-    "_id": "60d21b4667d0d8992e610c85",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "isAdmin": false
+    "_id": "68c9f190f7f653e9a915eb76",
+        "name": "Manar",
+        "email": "manar@example.com",
+        "role": "Admin",
+        "createdAt": "2025-09-16T23:24:00.057Z",
+        "updatedAt": "2025-09-16T23:24:00.057Z",
+        "__v": 0
   }
   ```
 
@@ -146,10 +121,13 @@ Authentication is done using **JWT Tokens**.
   
   // Response
   {
-    "_id": "60d21b4667d0d8992e610c85",
-    "name": "John Modified",
-    "email": "john@example.com",
-    "isAdmin": true
+    "_id": "68c9f190f7f653e9a915eb76",
+        "name": "john modified",
+        "email": "john@example.com",
+        "role": "Admin",
+        "createdAt": "2025-09-16T23:24:00.057Z",
+        "updatedAt": "2025-09-16T23:24:00.057Z",
+        "__v": 0
   }
   ```
 
@@ -168,7 +146,7 @@ Authentication is done using **JWT Tokens**.
   
 ##  📚Books
 
-  `POST /api/books` - Delete user (admin only)
+  `POST /api/books` - Delete book (admin only)
   ```json
 
   // Headers
@@ -176,28 +154,14 @@ Authentication is done using **JWT Tokens**.
     "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
   }
 
-  // Request 
-  {
-    "title": "The Great Gatsby",
-  "author": "F. Scott Fitzgerald",
-  "isbn": "9780743273565",
-  "copies": 5
-  
-  }
-  //Response
-  {
-    "_id": "650b1f...",
-  "title": "The Great Gatsby",
-  "author": "F. Scott Fitzgerald",
-  "isbn": "9780743273565",
-  "copies": 5,
-  "availableCopies": 5,
-  "createdAt": "2025-09-15T22:00:00.000Z",
-  "updatedAt": "2025-09-15T22:00:00.000Z"
-  }
+
+// Response
+{
+  "message": "Book removed successfully"
+}
   ```
   
-  `GET /api/books` 
+  `GET /api/books` - get all books
   ```json
 
   
@@ -212,4 +176,77 @@ Authentication is done using **JWT Tokens**.
     "availableCopies": 5
   }
   ```
+   `GET /api/books/:title` - get book by title 
+  ```json
+
+   //Response
+  {
+    "_id": "650b1f...",
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "isbn": "9780743273565",
+    "copies": 5,
+    "availableCopies": 5
+  }
+  ```
+   `POST /api/books` - post new book (admin only)
+  ```json
+  //Header
+  {
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  }
+
+//Request
+  {
+    "_id": "650b1f...",
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "isbn": "9780743273565",
+    "copies": 5,
+    "availableCopies": 5
+  }
+  // Response
+{
+  "_id": "650b1f...",
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "isbn": "9780743273565",
+  "copies": 5,
+  "availableCopies": 5,
+  "createdAt": "2025-09-15T22:00:00.000Z",
+  "updatedAt": "2025-09-15T22:00:00.000Z"
+}
+  ```
+
+   `PUT /api/books/:id` - update specific book (admin only)
+  ```json
+//Header
+  {
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  }
+
+
+
+     //Request
+   {
+    "title": "The Great Gatsby - Updated",
+  "author": "F. Scott Fitzgerald",
+  "isbn": "9780743273565",
+  "copies": 10
+  }
+
+  //Response
+  {
+  "_id": "650b1f...",
+  "title": "The Great Gatsby - Updated",
+  "author": "F. Scott Fitzgerald",
+  "isbn": "9780743273565",
+  "copies": 10,
+  "availableCopies": 10,
+  "updatedAt": "2025-09-15T23:00:00.000Z"
+}
+  ```
+  
+
+  
   

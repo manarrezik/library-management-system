@@ -6,7 +6,7 @@ import Book from "../models/Book.js";
 
 const borrowBook = async(req, res) => {
 try{
-    const book = await Book.findbyId(req.params.bookId);
+    const book = await Book.findById(req.params.bookId);
 
 
 if(!book) {
